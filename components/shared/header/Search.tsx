@@ -1,4 +1,6 @@
+import { SearchIcon } from "lucide-react";
 import { Input } from "@/components/ui/input";
+
 import {
   Select,
   SelectContent,
@@ -6,14 +8,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { SearchIcon } from "lucide-react";
 import { APP_NAME } from "@/lib/constants";
-
 const categories = ["men", "women", "kids", "accessories"];
-
 const Search = async () => {
   return (
-    <form action="/search" method="GET" className="flex items-stretch h-10">
+    <form action="/search" method="GET" className="flex  items-stretch h-10 ">
       <Select name="category">
         <SelectTrigger className="w-auto h-full dark:border-gray-200 bg-gray-100 text-black border-r  rounded-r-none rounded-l-md">
           <SelectValue placeholder="All" />
