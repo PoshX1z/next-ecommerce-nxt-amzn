@@ -60,6 +60,7 @@ const HomeCarousal = ({
       </CarouselContent>
       <CarouselPrevious className="left-0 md:left-12" />
       <CarouselNext className="right-0 md:right-12" />
+      <h1></h1>
     </Carousel>
   );
 };
