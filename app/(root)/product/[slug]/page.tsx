@@ -9,7 +9,7 @@ import ProductPrice from "@/components/shared/product/ProductPrice";
 import ProductGallery from "@/components/shared/product/ProductGallery";
 import { Separator } from "@/components/ui/separator";
 import ProductSlider from "@/components/shared/product/ProductSlider";
-import Rating from "../Rating";
+import Rating from "@/components/shared/product/Rating";
 
 export async function generateMetadata(props: {
   params: Promise<{ slug: string }>;
