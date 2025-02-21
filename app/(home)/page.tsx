@@ -1,3 +1,4 @@
+import BrowsingHistoryList from "@/components/shared/BrowsingHistoryList";
 import HomeCard from "@/components/shared/home/HomeCard";
 import HomeCarousal from "@/components/shared/home/HomeCarousal";
 import ProductSlider from "@/components/shared/product/ProductSlider";
@@ -83,6 +84,10 @@ export default async function Page() {
             />
           </CardContent>
         </Card>
+      </div>
+
+      <div className="p-4 bg-blackground">
+        <BrowsingHistoryList />
       </div>
     </>
   );
