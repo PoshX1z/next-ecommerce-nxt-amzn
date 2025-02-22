@@ -1,12 +1,14 @@
 import { Document, Model, model, models, Schema } from "mongoose";
 import { IProductInput } from "@/types";
 
+//Iproduct extends of these in order to use in mongodb and have addtional properties like _id, createdAt, updatedAt for mongodb.
 export interface IProduct extends Document, IProductInput {
   _id: string;
   createdAt: Date;
   updatedAt: Date;
 }
 
+//This creates a mongoose schema with specific fields and data types that we provide. (Actual schema used in MongoDB via Mongoose)
 const productSchema = new Schema<IProduct>(
   {
     name: {
@@ -91,6 +93,7 @@ const productSchema = new Schema<IProduct>(
   }
 );
 
+//Creating the mongoose model. If a Product model already exists, use it. Otherwise, create a new model using ProductSchema.
 const Product =
   (models.Product as Model<IProduct>) ||
   model<IProduct>("Product", productSchema);

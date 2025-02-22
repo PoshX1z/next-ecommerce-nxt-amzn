@@ -1,6 +1,8 @@
 import { z } from "zod";
 import { formatNumberWithDecimal } from "./utils";
 
+/* Zod schema is used for checking type of data that whether it stores in correct format or not before actual usage.  */
+
 // Common
 const Price = (field: string) =>
   z.coerce
@@ -9,8 +11,9 @@ const Price = (field: string) =>
       (value) => /^\d+(\.\d{2})?$/.test(formatNumberWithDecimal(value)),
       `${field} must have exactly two decimal places (e.g., 49.99)`
     );
+//Checking type of product details.
 export const ProductInputSchema = z.object({
-  name: z.string().min(3, "Name must be at least 3 characters"),
+  name: z.string().min(3, "Name must be at least 3 characters"), //Ex. this is "name" variable that must be "string" type, has min of 3 characters, if not throw error "Name must be at least 3 characters".
   slug: z.string().min(3, "Slug must be at least 3 characters"),
   category: z.string().min(1, "Category is required"),
   images: z.array(z.string()).min(1, "Product must have at least one image"),
