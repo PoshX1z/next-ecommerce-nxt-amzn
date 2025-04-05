@@ -17,7 +17,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
 
-export const CartPage = () => {
+export default function CartPage() {
   const {
     cart: { items, itemsPrice },
     updateItem,
@@ -188,5 +188,4 @@ export const CartPage = () => {
       <BrowsingHistoryList className="mt-10" />
     </div>
   );
-};
-export default CartPage;
+}
