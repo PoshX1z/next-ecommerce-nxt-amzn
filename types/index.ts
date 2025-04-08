@@ -3,6 +3,7 @@ import {
   OrderInputSchema,
   OrderItemSchema,
   ProductInputSchema,
+  ReviewInputSchema,
   ShippingAddressSchema,
   UserInputSchema,
   UserSignInSchema,
@@ -27,6 +28,11 @@ export type Data = {
     buttonCaption: string;
     isPublished: boolean;
   }[];
+  reviews: {
+    title: string;
+    rating: number;
+    comment: string;
+  }[];
 };
 export type IOrderInput = z.infer<typeof OrderInputSchema>;
 export type OrderItem = z.infer<typeof OrderItemSchema>;
@@ -36,3 +42,12 @@ export type ShippingAddress = z.infer<typeof ShippingAddressSchema>;
 export type IUserInput = z.infer<typeof UserInputSchema>;
 export type IUserSignIn = z.infer<typeof UserSignInSchema>;
 export type IUserSignUp = z.infer<typeof UserSignUpSchema>;
+
+export type IReviewInput = z.infer<typeof ReviewInputSchema>;
+export type IReviewDetails = IReviewInput & {
+  _id: string;
+  createdAt: string;
+  user: {
+    name: string;
+  };
+};
