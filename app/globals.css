@@ -90,4 +90,7 @@ body {
   .flex-between {
     @apply flex justify-between items-center;
   }
+  .item-button {
+    @apply p-3 hover:bg-muted hover:no-underline;
+  }
 }
