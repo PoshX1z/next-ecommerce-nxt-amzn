@@ -6,6 +6,7 @@ import {
   ReviewInputSchema,
   ShippingAddressSchema,
   UserInputSchema,
+  UserNameSchema,
   UserSignInSchema,
   UserSignUpSchema,
 } from "@/lib/validator";
@@ -51,3 +52,5 @@ export type IReviewDetails = IReviewInput & {
     name: string;
   };
 };
+
+export type IUserName = z.infer<typeof UserNameSchema>;
