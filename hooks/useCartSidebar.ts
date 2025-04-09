@@ -1,6 +1,6 @@
 import { usePathname } from "next/navigation";
-import useDeviceType from "./use-device-type";
-import useCartStore from "./use-cart-store";
+import useDeviceType from "./useDeviceType";
+import useCartStore from "./useCartStore";
 
 const isNotInPaths = (s: string) =>
   !/^\/$|^\/cart$|^\/checkout$|^\/sign-in$|^\/sign-up$|^\/order(\/.*)?$|^\/account(\/.*)?$|^\/admin(\/.*)?$/.test(

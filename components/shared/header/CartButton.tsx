@@ -2,9 +2,9 @@
 
 import { ShoppingCartIcon } from "lucide-react";
 import Link from "next/link";
-import useIsMounted from "@/hooks/use-is-mounted";
+import useIsMounted from "@/hooks/useIsMounted";
 import { cn } from "@/lib/utils";
-import useCartStore from "@/hooks/use-cart-store";
+import useCartStore from "@/hooks/useCartStore";
 
 const CartButton = () => {
   const isMounted = useIsMounted();

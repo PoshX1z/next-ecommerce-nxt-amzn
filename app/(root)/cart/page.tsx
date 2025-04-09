@@ -10,7 +10,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import useCartStore from "@/hooks/use-cart-store";
+import useCartStore from "@/hooks/useCartStore";
 import { APP_NAME, FREE_SHIPPING_MIN_PRICE } from "@/lib/constants";
 import Image from "next/image";
 import Link from "next/link";

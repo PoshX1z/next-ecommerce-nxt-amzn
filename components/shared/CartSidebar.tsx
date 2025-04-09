@@ -14,7 +14,7 @@ import { Button, buttonVariants } from "../ui/button";
 import { TrashIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { FREE_SHIPPING_MIN_PRICE } from "@/lib/constants";
-import useCartStore from "@/hooks/use-cart-store";
+import useCartStore from "@/hooks/useCartStore";
 
 export default function CartSidebar() {
   const {

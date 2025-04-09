@@ -1,5 +1,5 @@
 "use client";
-import useBrowsingHistory from "@/hooks/use-browsing-history";
+import useBrowsingHistory from "@/hooks/useBrowsingHistory";
 import ProductSlider from "./product/ProductSlider";
 import React, { useEffect } from "react";
 import { Separator } from "../ui/separator";

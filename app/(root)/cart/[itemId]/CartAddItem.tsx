@@ -7,7 +7,7 @@ import { CheckCircle2Icon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import useCartStore from "@/hooks/use-cart-store";
+import useCartStore from "@/hooks/useCartStore";
 import { FREE_SHIPPING_MIN_PRICE } from "@/lib/constants";
 import BrowsingHistoryList from "@/components/shared/BrowsingHistoryList";
 

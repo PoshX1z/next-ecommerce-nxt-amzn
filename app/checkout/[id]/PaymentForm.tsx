@@ -6,7 +6,7 @@ import {
   usePayPalScriptReducer,
 } from "@paypal/react-paypal-js";
 import { Card, CardContent } from "@/components/ui/card";
-import { useToast } from "@/hooks/use-toast";
+import { useToast } from "@/hooks/useToast";
 import {
   approvePayPalOrder,
   createPayPalOrder,

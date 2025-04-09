@@ -41,6 +41,6 @@ yarn-error.log*
 next-env.d.ts
 
 # else
-/lessons
+/lessons(remastered)
 *.txt
 /t.ts
