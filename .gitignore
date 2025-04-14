@@ -44,3 +44,4 @@ next-env.d.ts
 /lessons(remastered)
 *.txt
 /t.ts
+/useful_command.md
