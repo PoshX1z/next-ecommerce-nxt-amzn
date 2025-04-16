@@ -8,16 +8,18 @@ import bcrypt from "bcryptjs";
 import { formatError } from "../utils";
 import { UserSignUpSchema } from "../validator";
 
-export async function signInWithCredentials(user: IUserSignIn) {
+// Sign in with credentials function.
+export const signInWithCredentials = async (user: IUserSignIn) => {
   return await signIn("credentials", { ...user, redirect: false });
-}
+};
+// Sign out function.
 export const SignOut = async () => {
   const redirectTo = await signOut({ redirect: false });
   redirect(redirectTo.redirect);
 };
 
-// CREATE
-export async function registerUser(userSignUp: IUserSignUp) {
+// Register
+export const registerUser = async (userSignUp: IUserSignUp) => {
   try {
     const user = await UserSignUpSchema.parseAsync({
       name: userSignUp.name,
@@ -35,14 +37,14 @@ export async function registerUser(userSignUp: IUserSignUp) {
   } catch (error) {
     return { success: false, error: formatError(error) };
   }
-}
+};
 
 export const SignInWithGoogle = async () => {
   await signIn("google");
 };
 
-// UPDATE
-export async function updateUserName(user: IUserName) {
+// Update user name
+export const updateUserName = async (user: IUserName) => {
   try {
     await connectToDatabase();
     const session = await auth();
@@ -58,4 +60,4 @@ export async function updateUserName(user: IUserName) {
   } catch (error) {
     return { success: false, message: formatError(error) };
   }
-}
+};

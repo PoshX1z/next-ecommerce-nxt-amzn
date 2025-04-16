@@ -16,11 +16,11 @@ export const metadata: Metadata = {
   title: "Sign In",
 };
 // Sign in page.
-export default async function SignIn(props: {
+const SignIn = async (props: {
   searchParams: Promise<{
     callbackUrl: string;
   }>;
-}) {
+}) => {
   const searchParams = await props.searchParams;
 
   const { callbackUrl = "/" } = searchParams;
@@ -55,4 +55,5 @@ export default async function SignIn(props: {
       </Link>
     </div>
   );
-}
+};
+export default SignIn;

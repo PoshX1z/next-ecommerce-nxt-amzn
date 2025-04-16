@@ -1,13 +1,13 @@
-/* Zod schema is used for checking type of data for storing in database.  */
+/* Validator is used to check type of data before store it in database by using "Zod Schema".  */
 import { z } from "zod";
 import { formatNumberWithDecimal } from "./utils";
 
-// MongoDB object id. Ex: "507f1f77bcf86cd799439011"
+// MongoDB object id. Ex: "507f1f77bcf86cd799439011".
 const MongoId = z
   .string()
   .regex(/^[0-9a-fA-F]{24}$/, { message: "Invalid MongoDB ID" });
 
-// Common
+// Common.
 const Price = (field: string) =>
   z.coerce
     .number()
@@ -16,7 +16,7 @@ const Price = (field: string) =>
       `${field} must have exactly two decimal places (e.g., 49.99)`
     );
 
-// Review
+// Review.
 export const ReviewInputSchema = z.object({
   product: MongoId,
   user: MongoId,
@@ -30,8 +30,7 @@ export const ReviewInputSchema = z.object({
     .max(5, "Rating must be at most 5"),
 });
 
-// Product
-
+// Product.
 export const ProductInputSchema = z.object({
   name: z.string().min(3, "Name must be at least 3 characters"), // This is "name" variable that must be "string" type, has min of 3 characters, if not throw error "Name must be at least 3 characters".
   slug: z.string().min(3, "Slug must be at least 3 characters"),
@@ -67,7 +66,7 @@ export const ProductInputSchema = z.object({
     .nonnegative("Number of sales must be a non-negative number"),
 });
 
-// Order Item
+// Order Item.
 export const OrderItemSchema = z.object({
   clientId: z.string().min(1, "clientId is required"),
   product: z.string().min(1, "Product is required"),
@@ -88,7 +87,7 @@ export const OrderItemSchema = z.object({
   color: z.string().optional(),
 });
 
-// Shipping Address
+// Shipping Address.
 export const ShippingAddressSchema = z.object({
   fullName: z.string().min(1, "Full name is required"),
   street: z.string().min(1, "Address is required"),
@@ -99,7 +98,7 @@ export const ShippingAddressSchema = z.object({
   country: z.string().min(1, "Country is required"),
 });
 
-// Order
+// Order.
 export const OrderInputSchema = z.object({
   user: z.union([
     MongoId,
@@ -137,7 +136,7 @@ export const OrderInputSchema = z.object({
   paidAt: z.date().optional(),
 });
 
-// Cart
+// Cart.
 export const CartSchema = z.object({
   items: z
     .array(OrderItemSchema)
@@ -152,7 +151,7 @@ export const CartSchema = z.object({
   expectedDeliveryDate: z.optional(z.date()),
 });
 
-// User
+// User.
 const UserName = z
   .string()
   .min(2, { message: "Username must be at least 2 characters" })
@@ -161,6 +160,7 @@ const Email = z.string().min(1, "Email is required").email("Email is invalid");
 const Password = z.string().min(3, "Password must be at least 3 characters");
 const UserRole = z.string().min(1, "role is required");
 
+// User input.
 export const UserInputSchema = z.object({
   name: UserName,
   email: Email,
@@ -180,11 +180,13 @@ export const UserInputSchema = z.object({
   }),
 });
 
+// User sign in.
 export const UserSignInSchema = z.object({
   email: Email,
   password: Password,
 });
 
+// User sign up.
 export const UserSignUpSchema = UserSignInSchema.extend({
   name: UserName,
   confirmPassword: Password,
@@ -193,6 +195,7 @@ export const UserSignUpSchema = UserSignInSchema.extend({
   path: ["confirmPassword"],
 });
 
+// User name.
 export const UserNameSchema = z.object({
   name: UserName,
 });

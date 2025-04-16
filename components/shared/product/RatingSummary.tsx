@@ -22,12 +22,12 @@ type RatingSummaryProps = {
   }[];
 };
 
-export default function RatingSummary({
+const RatingSummary = ({
   asPopover,
   avgRating = 0,
   numReviews = 0,
   ratingDistribution = [],
-}: RatingSummaryProps) {
+}: RatingSummaryProps) => {
   const RatingDistribution = () => {
     const ratingPercentageDistribution = ratingDistribution.map((x) => ({
       ...x,
@@ -92,4 +92,5 @@ export default function RatingSummary({
   ) : (
     <RatingDistribution />
   );
-}
+};
+export default RatingSummary;

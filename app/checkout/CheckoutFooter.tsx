@@ -3,7 +3,7 @@ import Link from "next/link";
 import React from "react";
 
 // Checkout footer.
-export default function CheckoutFooter() {
+const CheckoutFooter = () => {
   return (
     <div className="border-t-2 space-y-2 my-4 py-4">
       <p>
@@ -28,4 +28,5 @@ export default function CheckoutFooter() {
       </p>
     </div>
   );
-}
+};
+export default CheckoutFooter;

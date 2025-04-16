@@ -196,7 +196,7 @@ export const colorStore = create<ColorState>()(
   })
 );
 
-export default function useColorStore(theme: string = "light") {
+const useColorStore = (theme: string = "light") => {
   const colorState = colorStore();
   const getColor = () => {
     const userColor = colorState.availableColors.find(
@@ -233,4 +233,5 @@ export default function useColorStore(theme: string = "light") {
       }
     },
   };
-}
+};
+export default useColorStore;

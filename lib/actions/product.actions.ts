@@ -4,20 +4,21 @@ import { connectToDatabase } from "@/lib/db";
 import Product, { IProduct } from "@/lib/db/models/product.model";
 import { PAGE_SIZE } from "../constants";
 
-export async function getAllCategories() {
+// Get all categories.
+export const getAllCategories = async () => {
   await connectToDatabase();
   const categories = await Product.find({ isPublished: true }).distinct(
     "category"
   );
   return categories;
-}
-export async function getProductsForCard({
+};
+export const getProductsForCard = async ({
   tag,
   limit = 4,
 }: {
   tag: string;
   limit?: number;
-}) {
+}) => {
   await connectToDatabase();
   const products = await Product.find(
     { tags: { $in: [tag] }, isPublished: true },
@@ -34,15 +35,15 @@ export async function getProductsForCard({
     href: string;
     image: string;
   }[];
-}
+};
 
-export async function getProductsByTag({
+export const getProductsByTag = async ({
   tag,
   limit = 10,
 }: {
   tag: string;
   limit?: number;
-}) {
+}) => {
   await connectToDatabase();
   const products = await Product.find({
     tags: { $in: [tag] },
@@ -51,18 +52,18 @@ export async function getProductsByTag({
     .sort({ createdAt: "desc" })
     .limit(limit);
   return JSON.parse(JSON.stringify(products)) as IProduct[];
-}
+};
 
 // Get one product by slug.
-export async function getProductBySlug(slug: string) {
+export const getProductBySlug = async (slug: string) => {
   await connectToDatabase();
   const product = await Product.findOne({ slug, isPublished: true });
   if (!product) throw new Error("Product not found");
   return JSON.parse(JSON.stringify(product)) as IProduct;
-}
+};
 
 // Get related products to put in recommend choice.
-export async function getRelatedProductsByCategory({
+export const getRelatedProductsByCategory = async ({
   category,
   productId,
   limit = PAGE_SIZE,
@@ -72,7 +73,7 @@ export async function getRelatedProductsByCategory({
   productId: string;
   limit?: number;
   page: number;
-}) {
+}) => {
   await connectToDatabase();
   const skipAmount = (Number(page) - 1) * limit;
   const conditions = {
@@ -89,10 +90,10 @@ export async function getRelatedProductsByCategory({
     data: JSON.parse(JSON.stringify(products)) as IProduct[],
     totalPages: Math.ceil(productsCount / limit),
   };
-}
+};
 
 // Get all products.
-export async function getAllProducts({
+export const getAllProducts = async ({
   query,
   limit,
   page,
@@ -110,7 +111,7 @@ export async function getAllProducts({
   price?: string;
   rating?: string;
   sort?: string;
-}) {
+}) => {
   limit = limit || PAGE_SIZE;
   await connectToDatabase();
 
@@ -181,9 +182,9 @@ export async function getAllProducts({
     from: limit * (Number(page) - 1) + 1,
     to: limit * (Number(page) - 1) + products.length,
   };
-}
+};
 
-export async function getAllTags() {
+export const getAllTags = async () => {
   const tags = await Product.aggregate([
     { $unwind: "$tags" },
     { $group: { _id: null, uniqueTags: { $addToSet: "$tags" } } },
@@ -199,4 +200,4 @@ export async function getAllTags() {
           .join(" ")
       ) as string[]) || []
   );
-}
+};

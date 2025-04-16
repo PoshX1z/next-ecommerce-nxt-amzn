@@ -5,11 +5,7 @@ import CartSidebar from "./CartSidebar";
 import { Toaster } from "../ui/toaster";
 import { ThemeProvider } from "./ThemeProvider";
 
-export const ClientProviders = ({
-  children,
-}: {
-  children: React.ReactNode;
-}) => {
+const ClientProviders = ({ children }: { children: React.ReactNode }) => {
   const isCartSidebarOpen = useCartSidebar();
 
   return (

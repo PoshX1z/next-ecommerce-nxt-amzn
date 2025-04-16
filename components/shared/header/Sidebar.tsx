@@ -15,11 +15,7 @@ import {
 import { auth } from "@/auth";
 
 // Side bar setting page.
-export default async function Sidebar({
-  categories,
-}: {
-  categories: string[];
-}) {
+const Sidebar = async ({ categories }: { categories: string[] }) => {
   const session = await auth();
 
   return (
@@ -117,4 +113,6 @@ export default async function Sidebar({
       </DrawerContent>
     </Drawer>
   );
-}
+};
+
+export default Sidebar;

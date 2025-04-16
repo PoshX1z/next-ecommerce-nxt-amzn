@@ -16,7 +16,7 @@ import {
 import useColorStore from "@/hooks/useColorStore";
 import useIsMounted from "@/hooks/useIsMounted";
 
-export default function ThemeSwitcher() {
+const ThemeSwitcher = () => {
   const { theme, setTheme } = useTheme();
   const { availableColors, color, setColor } = useColorStore(theme);
   const changeTheme = (value: string) => {
@@ -69,4 +69,5 @@ export default function ThemeSwitcher() {
       </DropdownMenuContent>
     </DropdownMenu>
   );
-}
+};
+export default ThemeSwitcher;

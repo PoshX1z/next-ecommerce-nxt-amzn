@@ -19,12 +19,7 @@ import { buttonVariants } from "@/components/ui/button";
 import ProductPrice from "../product/ProductPrice";
 
 // Order details form
-export default function OrderDetailsForm({
-  order,
-}: {
-  order: IOrder;
-  isAdmin: boolean;
-}) {
+const OrderDetailsForm = ({ order }: { order: IOrder; isAdmin: boolean }) => {
   const {
     shippingAddress,
     items,
@@ -167,4 +162,5 @@ export default function OrderDetailsForm({
       </div>
     </div>
   );
-}
+};
+export default OrderDetailsForm;

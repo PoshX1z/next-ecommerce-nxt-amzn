@@ -14,7 +14,7 @@ import { cn } from "@/lib/utils";
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 
-export default async function UserButton() {
+const UserButton = async () => {
   const session = await auth();
   return (
     <div className="flex gap-2 items-center">
@@ -87,4 +87,5 @@ export default async function UserButton() {
       </DropdownMenu>
     </div>
   );
-}
+};
+export default UserButton;

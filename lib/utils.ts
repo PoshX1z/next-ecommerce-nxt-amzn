@@ -29,15 +29,15 @@ const CURRENCY_FORMATTER = new Intl.NumberFormat("en-US", {
   style: "currency",
   minimumFractionDigits: 2,
 });
-export function formatCurrency(amount: number) {
+export const formatCurrency = (amount: number) => {
   return CURRENCY_FORMATTER.format(amount);
-}
+};
 
 // Ex: 1099255 => 1,099,255
 const NUMBER_FORMATTER = new Intl.NumberFormat("en-US");
-export function formatNumber(number: number) {
+export const formatNumber = (number: number) => {
   return NUMBER_FORMATTER.format(number);
-}
+};
 
 // Ex: 5.435 => 5.44
 export const round2 = (num: number) =>
@@ -73,21 +73,21 @@ export const formatError = (error: any): string => {
   }
 };
 // Plus date to that number. Ex: today is 14 april (2025-04-14T03:37:04.911Z) => 17 april (2025-04-17T03:37:04.911Z)
-export function calculateFutureDate(days: number) {
+export const calculateFutureDate = (days: number) => {
   const currentDate = new Date();
   currentDate.setDate(currentDate.getDate() + days);
   return currentDate;
-}
+};
 
 // Minus date to that number. Ex: today is 14 april (2025-04-14T03:37:04.911Z) => 11 april (2025-04-11T03:37:04.911Z)
-export function calculatePastDate(days: number) {
+export const calculatePastDate = (days: number) => {
   const currentDate = new Date();
   currentDate.setDate(currentDate.getDate() - days);
   return currentDate;
-}
+};
 
 // Ex: getMonthName("2025-04-14T03:37:04.911Z") => April (ongoing), getMonthName("2025-07-14T03:37:04.911Z") => July
-export function getMonthName(yearAndMonth: string) {
+export const getMonthName = (yearAndMonth: string) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [year, monthNumber] = yearAndMonth.split("-");
   const date = new Date();
@@ -95,10 +95,10 @@ export function getMonthName(yearAndMonth: string) {
   return new Date().getMonth() === parseInt(monthNumber) - 1
     ? `${date.toLocaleString("default", { month: "long" })} (ongoing)`
     : date.toLocaleString("default", { month: "long" });
-}
+};
 
 // Ex: at 11:12 AM => { hours: 12, minutes: 48 }
-export function timeUntilMidnight(): { hours: number; minutes: number } {
+export const timeUntilMidnight = (): { hours: number; minutes: number } => {
   const now = new Date();
   const midnight = new Date();
   midnight.setHours(24, 0, 0, 0); // Set to 12:00 AM (next day)
@@ -108,7 +108,7 @@ export function timeUntilMidnight(): { hours: number; minutes: number } {
   const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
 
   return { hours, minutes };
-}
+};
 
 // Format date to be readable from Date object by using dateTime, dateOnly, timeOnly variable that provided here.
 export const formatDateTime = (dateString: Date) => {
@@ -151,12 +151,12 @@ export const formatDateTime = (dateString: Date) => {
 };
 
 // Ex: 225425bhasfui223532f43efwdsad2ey6u212r => ..6u212r
-export function formatId(id: string) {
+export const formatId = (id: string) => {
   return `..${id.substring(id.length - 6)}`;
-}
+};
 
 // Modifying url in a clean way for pagination.
-export function formUrlQuery({
+export const formUrlQuery = ({
   params,
   key,
   value,
@@ -164,7 +164,7 @@ export function formUrlQuery({
   params: string;
   key: string;
   value: string | null;
-}) {
+}) => {
   const currentUrl = qs.parse(params);
 
   currentUrl[key] = value;
@@ -176,7 +176,7 @@ export function formUrlQuery({
     },
     { skipNull: true }
   );
-}
+};
 
 // Return url in a clean way, using with href.
 export const getFilterUrl = ({

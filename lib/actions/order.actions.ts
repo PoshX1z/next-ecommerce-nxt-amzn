@@ -105,13 +105,13 @@ export const calcDeliveryDateAndPrice = async ({
   };
 };
 
-export async function getOrderById(orderId: string): Promise<IOrder> {
+export const getOrderById = async (orderId: string): Promise<IOrder> => {
   await connectToDatabase();
   const order = await Order.findById(orderId);
   return JSON.parse(JSON.stringify(order));
-}
+};
 
-export async function createPayPalOrder(orderId: string) {
+export const createPayPalOrder = async (orderId: string) => {
   await connectToDatabase();
   try {
     const order = await Order.findById(orderId);
@@ -135,12 +135,12 @@ export async function createPayPalOrder(orderId: string) {
   } catch (err) {
     return { success: false, message: formatError(err) };
   }
-}
+};
 
-export async function approvePayPalOrder(
+export const approvePayPalOrder = async (
   orderId: string,
   data: { orderID: string }
-) {
+) => {
   await connectToDatabase();
   try {
     const order = await Order.findById(orderId).populate("user", "email");
@@ -172,16 +172,16 @@ export async function approvePayPalOrder(
   } catch (err) {
     return { success: false, message: formatError(err) };
   }
-}
+};
 
 //Get orders
-export async function getMyOrders({
+export const getMyOrders = async ({
   limit,
   page,
 }: {
   limit?: number;
   page: number;
-}) {
+}) => {
   limit = limit || PAGE_SIZE;
   await connectToDatabase();
   const session = await auth();
@@ -201,4 +201,4 @@ export async function getMyOrders({
     data: JSON.parse(JSON.stringify(orders)),
     totalPages: Math.ceil(ordersCount / limit),
   };
-}
+};

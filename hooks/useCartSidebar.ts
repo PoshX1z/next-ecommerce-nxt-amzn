@@ -6,7 +6,7 @@ const isNotInPaths = (s: string) =>
   !/^\/$|^\/cart$|^\/checkout$|^\/sign-in$|^\/sign-up$|^\/order(\/.*)?$|^\/account(\/.*)?$|^\/admin(\/.*)?$/.test(
     s
   );
-function useCartSidebar() {
+const useCartSidebar = () => {
   const {
     cart: { items },
   } = useCartStore();
@@ -16,6 +16,6 @@ function useCartSidebar() {
   return (
     items.length > 0 && deviceType === "desktop" && isNotInPaths(currentPath)
   );
-}
+};
 
 export default useCartSidebar;

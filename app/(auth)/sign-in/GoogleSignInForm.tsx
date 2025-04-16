@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { SignInWithGoogle } from "@/lib/actions/user.actions";
 
 // Sign in with google button.
-export function GoogleSignInForm() {
+export const GoogleSignInForm = () => {
   const SignInButton = () => {
     const { pending } = useFormStatus();
     return (
@@ -23,4 +23,4 @@ export function GoogleSignInForm() {
       <SignInButton />
     </form>
   );
-}
+};

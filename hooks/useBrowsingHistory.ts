@@ -16,7 +16,7 @@ export const browsingHistoryStore = create<BrowsingHistory>()(
   })
 );
 
-export default function useBrowsingHistory() {
+const useBrowsingHistory = () => {
   const { products } = browsingHistoryStore();
   return {
     products,
@@ -39,4 +39,5 @@ export default function useBrowsingHistory() {
       });
     },
   };
-}
+};
+export default useBrowsingHistory;

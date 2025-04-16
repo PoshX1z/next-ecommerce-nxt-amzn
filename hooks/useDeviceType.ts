@@ -1,7 +1,7 @@
 /* A hook that will hold the current device type (either "mobile" or "desktop"). */
 import { useState, useEffect } from "react";
 
-function useDeviceType() {
+const useDeviceType = () => {
   const [deviceType, setDeviceType] = useState("unknown");
 
   useEffect(() => {
@@ -16,6 +16,6 @@ function useDeviceType() {
   }, []);
 
   return deviceType;
-}
+};
 
 export default useDeviceType;

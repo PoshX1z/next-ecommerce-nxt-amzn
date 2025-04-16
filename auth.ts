@@ -10,7 +10,7 @@ import Google from "next-auth/providers/google";
 import NextAuth, { type DefaultSession } from "next-auth";
 import authConfig from "./auth.config";
 
-// Modifying the existing module by extending the default "Session" to include the role property of user.
+// Modifies the existing module by extending the default "Session" to include the role property of user.
 declare module "next-auth" {
   interface Session {
     user: {
@@ -31,7 +31,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     strategy: "jwt",
     maxAge: 30 * 24 * 60 * 60, // Maximum age of the session cookie (30 days).
   },
-  adapter: MongoDBAdapter(client), // Connect to mongodb adapter (acting as a bridge between next-auth and mongodb).
+  adapter: MongoDBAdapter(client), // Connects to mongodb adapter (acting as a bridge between next-auth and mongodb).
   providers: [
     Google({
       allowDangerousEmailAccountLinking: true,

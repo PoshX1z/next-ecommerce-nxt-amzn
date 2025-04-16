@@ -1,4 +1,4 @@
-//This script connects to MongoDB, deletes existing products, inserts new ones from data, and exits upon success or failure, initate by running npm run seed to insert product in database.
+/* This script connects to MongoDB, deletes existing products, inserts new ones from data, and exits upon success or failure, initate by running npm run seed to insert product in database. */
 import data from "@/lib/data";
 import { connectToDatabase } from ".";
 import Product from "./models/product.model";

@@ -1,3 +1,4 @@
+/* Connection database function. */
 import mongoose from "mongoose";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

@@ -4,7 +4,7 @@ import React from "react";
 
 import { Button } from "@/components/ui/button";
 
-export default function NotFound() {
+const NotFound = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen ">
       <div className="p-6 rounded-lg shadow-md w-1/3 text-center">
@@ -20,4 +20,5 @@ export default function NotFound() {
       </div>
     </div>
   );
-}
+};
+export default NotFound;

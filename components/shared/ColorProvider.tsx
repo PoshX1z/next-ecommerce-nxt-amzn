@@ -3,10 +3,10 @@
 import * as React from "react";
 import { ThemeProvider as NextThemesProvider, useTheme } from "next-themes";
 import useColorStore from "@/hooks/useColorStore";
-export function ColorProvider({
+export const ColorProvider = ({
   children,
   ...props
-}: React.ComponentProps<typeof NextThemesProvider>) {
+}: React.ComponentProps<typeof NextThemesProvider>) => {
   const { theme } = useTheme();
   const { color, updateCssVariables } = useColorStore(theme);
   React.useEffect(() => {
@@ -15,4 +15,4 @@ export function ColorProvider({
   }, [theme, color]);
 
   return <NextThemesProvider {...props}>{children}</NextThemesProvider>;
-}
+};

@@ -6,11 +6,7 @@ import React, { useEffect } from "react";
 import { Separator } from "../ui/separator";
 import { cn } from "@/lib/utils";
 
-export default function BrowsingHistoryList({
-  className,
-}: {
-  className?: string;
-}) {
+const BrowsingHistoryList = ({ className }: { className?: string }) => {
   const { products } = useBrowsingHistory();
   return (
     products.length !== 0 && (
@@ -29,7 +25,7 @@ export default function BrowsingHistoryList({
       </div>
     )
   );
-}
+};
 
 function ProductList({
   title,
@@ -61,3 +57,4 @@ function ProductList({
     )
   );
 }
+export default BrowsingHistoryList;

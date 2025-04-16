@@ -41,7 +41,7 @@ const signUpDefaultValues =
       };
 
 // Sign up form
-export default function SignUpForm() {
+const SignUpForm = () => {
   const searchParams = useSearchParams(); // Access the url query.
   const callbackUrl = searchParams.get("callbackUrl") || "/"; // Redirect back to where they were trying to access before redirect to sign in page.
 
@@ -170,4 +170,5 @@ export default function SignUpForm() {
       </form>
     </Form>
   );
-}
+};
+export default SignUpForm;

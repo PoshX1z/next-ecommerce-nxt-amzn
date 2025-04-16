@@ -17,7 +17,7 @@ import { FREE_SHIPPING_MIN_PRICE } from "@/lib/constants";
 import useCartStore from "@/hooks/useCartStore";
 
 // Cart side bar page.
-export default function CartSidebar() {
+const CartSidebar = () => {
   const {
     cart: { items, itemsPrice },
     updateItem,
@@ -108,4 +108,5 @@ export default function CartSidebar() {
       </div>
     </div>
   );
-}
+};
+export default CartSidebar;

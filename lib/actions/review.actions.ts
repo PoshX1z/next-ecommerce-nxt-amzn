@@ -14,13 +14,14 @@ import { ReviewInputSchema } from "../validator";
 import { IReviewDetails } from "@/types";
 import { PAGE_SIZE } from "../constants";
 
-export async function createUpdateReview({
+// Create or update a review for a product feature.
+export const createUpdateReview = async ({
   data,
   path,
 }: {
   data: z.infer<typeof ReviewInputSchema>;
   path: string;
-}) {
+}) => {
   try {
     const session = await auth();
     if (!session) {
@@ -66,7 +67,7 @@ export async function createUpdateReview({
       message: formatError(error),
     };
   }
-}
+};
 
 const updateProductReview = async (productId: string) => {
   // Calculate the new average rating, number of reviews, and rating distribution
@@ -102,7 +103,7 @@ const updateProductReview = async (productId: string) => {
   });
 };
 
-export async function getReviews({
+export const getReviews = async ({
   productId,
   limit,
   page,
@@ -110,7 +111,7 @@ export async function getReviews({
   productId: string;
   limit?: number;
   page: number;
-}) {
+}) => {
   limit = limit || PAGE_SIZE;
   await connectToDatabase();
   const skipAmount = (page - 1) * limit;
@@ -127,7 +128,7 @@ export async function getReviews({
     data: JSON.parse(JSON.stringify(reviews)) as IReviewDetails[],
     totalPages: reviewsCount === 0 ? 1 : Math.ceil(reviewsCount / limit),
   };
-}
+};
 export const getReviewByProductId = async ({
   productId,
 }: {

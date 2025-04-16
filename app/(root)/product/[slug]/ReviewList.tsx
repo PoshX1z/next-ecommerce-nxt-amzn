@@ -60,13 +60,13 @@ const reviewFormDefaultValues = {
 };
 
 // Review section of the product details page.
-export default function ReviewList({
+const ReviewList = ({
   userId,
   product,
 }: {
   userId: string | undefined;
   product: IProduct;
-}) {
+}) => {
   const [page, setPage] = useState(2);
   const [totalPages, setTotalPages] = useState(0);
   const [reviews, setReviews] = useState<IReviewDetails[]>([]);
@@ -328,4 +328,5 @@ export default function ReviewList({
       </div>
     </div>
   );
-}
+};
+export default ReviewList;

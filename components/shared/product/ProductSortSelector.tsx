@@ -10,7 +10,7 @@ import { getFilterUrl } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 import React from "react";
 
-export default function ProductSortSelector({
+const ProductSortSelector = ({
   sortOrders,
   sort,
   params,
@@ -25,7 +25,7 @@ export default function ProductSortSelector({
     sort?: string;
     page?: string;
   };
-}) {
+}) => {
   const router = useRouter();
   return (
     <Select
@@ -49,4 +49,5 @@ export default function ProductSortSelector({
       </SelectContent>
     </Select>
   );
-}
+};
+export default ProductSortSelector;

@@ -10,13 +10,13 @@ import {
 import useDeviceType from "@/hooks/useDeviceType";
 import { Button } from "../ui/button";
 
-export default function CollapsibleOnMobile({
+const CollapsibleOnMobile = ({
   title,
   children,
 }: {
   title: string;
   children: React.ReactNode;
-}) {
+}) => {
   const searchParams = useSearchParams();
 
   const deviceType = useDeviceType();
@@ -42,4 +42,5 @@ export default function CollapsibleOnMobile({
       <CollapsibleContent>{children}</CollapsibleContent>
     </Collapsible>
   );
-}
+};
+export default CollapsibleOnMobile;

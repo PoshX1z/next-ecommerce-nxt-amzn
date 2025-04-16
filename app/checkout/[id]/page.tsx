@@ -1,3 +1,5 @@
+/* Dynamic route for checkout id (Ex: checkout/2323, checkout/5522). */
+
 import { notFound } from "next/navigation";
 import React from "react";
 

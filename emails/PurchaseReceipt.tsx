@@ -63,6 +63,7 @@ PurchaseReceiptEmail.PreviewProps = {
 } satisfies OrderInformationProps;
 const dateFormatter = new Intl.DateTimeFormat("en", { dateStyle: "medium" });
 
+// Purchase receipt email that send to the user.
 export default async function PurchaseReceiptEmail({
   order,
 }: OrderInformationProps) {

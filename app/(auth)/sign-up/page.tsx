@@ -11,11 +11,11 @@ export const metadata: Metadata = {
 };
 
 // Sign up page.
-export default async function SignUpPage(props: {
+const SignUpPage = async (props: {
   searchParams: Promise<{
     callbackUrl: string;
   }>;
-}) {
+}) => {
   const searchParams = await props.searchParams;
 
   const { callbackUrl } = searchParams;
@@ -37,4 +37,5 @@ export default async function SignUpPage(props: {
       </Card>
     </div>
   );
-}
+};
+export default SignUpPage;
