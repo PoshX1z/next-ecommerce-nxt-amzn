@@ -16,6 +16,7 @@ import { cn } from "@/lib/utils";
 import { FREE_SHIPPING_MIN_PRICE } from "@/lib/constants";
 import useCartStore from "@/hooks/useCartStore";
 
+// Cart side bar page.
 export default function CartSidebar() {
   const {
     cart: { items, itemsPrice },

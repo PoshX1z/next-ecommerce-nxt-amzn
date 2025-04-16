@@ -40,18 +40,23 @@ const signUpDefaultValues =
         confirmPassword: "",
       };
 
+// Sign up form
 export default function SignUpForm() {
-  const searchParams = useSearchParams();
-  const callbackUrl = searchParams.get("callbackUrl") || "/";
+  const searchParams = useSearchParams(); // Access the url query.
+  const callbackUrl = searchParams.get("callbackUrl") || "/"; // Redirect back to where they were trying to access before redirect to sign in page.
 
+  // Initialize the form with react-hook-form and zod for validation.
   const form = useForm<IUserSignUp>({
     resolver: zodResolver(UserSignUpSchema),
     defaultValues: signUpDefaultValues,
   });
 
+  // Properties returned from the form.
   const { control, handleSubmit } = form;
 
+  // This function is called when the form is submitted.
   const onSubmit = async (data: IUserSignUp) => {
+    // If successful, it immediately calls signInWithCredentials to signin a newly registered user and then redirect to the callbackUrl.
     try {
       const res = await registerUser(data);
       if (!res.success) {
@@ -166,7 +171,3 @@ export default function SignUpForm() {
     </Form>
   );
 }
-
-/* 
-https://next-ecommerce-nxt-amzn.vercel.app
-*/

@@ -1,8 +1,8 @@
 "use client";
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useSession } from "next-auth/react";
-import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod"; // A bridge between Zod and React Hook Form (allow to validate react form).
+import { useSession } from "next-auth/react"; // A hook that provides access to the user's session data.
+import { useForm } from "react-hook-form"; // A hook for managing form state and validation.
 import { z } from "zod";
 import { useRouter } from "next/navigation";
 
@@ -20,6 +20,7 @@ import { useToast } from "@/hooks/useToast";
 import { updateUserName } from "@/lib/actions/user.actions";
 import { UserNameSchema } from "@/lib/validator";
 
+// Updating user name form.
 export const ProfileForm = () => {
   const router = useRouter();
   const { data: session, update } = useSession();
@@ -31,9 +32,10 @@ export const ProfileForm = () => {
     },
   });
   const { toast } = useToast();
-
+  // This function is called when the form is submitted.
   async function onSubmit(values: z.infer<typeof UserNameSchema>) {
     const res = await updateUserName(values);
+    // If response is successful, create new session and update user name.
     if (!res.success)
       return toast({
         variant: "destructive",
@@ -52,7 +54,7 @@ export const ProfileForm = () => {
     toast({
       description: message,
     });
-    router.push("/account/manage");
+    router.push("/account/manage"); // Navigate back to the account manage page.
   }
   return (
     <Form {...form}>

@@ -59,6 +59,7 @@ const reviewFormDefaultValues = {
   rating: 0,
 };
 
+// Review section of the product details page.
 export default function ReviewList({
   userId,
   product,

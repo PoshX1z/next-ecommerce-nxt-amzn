@@ -1,18 +1,20 @@
+/* This is utilities file containing different methods to use across the project. */
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import qs from "query-string";
+
+// Utility function that helps combining tailwindcss classname smartly.
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-//formatNumberWithDecimal(18.8) => 18.80
+// Ex: 18.8 => 18.80, 123.000 => 123
 export const formatNumberWithDecimal = (num: number): string => {
   const [int, decimal] = num.toString().split(".");
   return decimal ? `${int}.${decimal.padEnd(2, "0")}` : int;
 };
-// PROMPT: [ChatGPT] create toSlug ts arrow function that convert text to lowercase, remove non-word, non-whitespace, non-hyphen characters, replace whitespace, trim leading hyphens and trim trailing hyphens
 
-//Convert text to slug
+// Convert text to slug. Ex: Casio Classic Silver Tone => casio-classic-silver-tone
 export const toSlug = (text: string): string =>
   text
     .toLowerCase()
@@ -21,6 +23,7 @@ export const toSlug = (text: string): string =>
     .replace(/^-+|-+$/g, "")
     .replace(/-+/g, "-");
 
+// Ex: 34.32 => $34.32, 34.035 => $34.04
 const CURRENCY_FORMATTER = new Intl.NumberFormat("en-US", {
   currency: "USD",
   style: "currency",
@@ -30,16 +33,21 @@ export function formatCurrency(amount: number) {
   return CURRENCY_FORMATTER.format(amount);
 }
 
+// Ex: 1099255 => 1,099,255
 const NUMBER_FORMATTER = new Intl.NumberFormat("en-US");
 export function formatNumber(number: number) {
   return NUMBER_FORMATTER.format(number);
 }
+
+// Ex: 5.435 => 5.44
 export const round2 = (num: number) =>
   Math.round((num + Number.EPSILON) * 100) / 100;
 
+// Ex: 852399241224471298558190
 export const generateId = () =>
   Array.from({ length: 24 }, () => Math.floor(Math.random() * 10)).join("");
 
+// Format error related to database actions (order.actions,user.actions, etc.) so it will be easier to read.
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const formatError = (error: any): string => {
   if (error.name === "ZodError") {
@@ -64,11 +72,21 @@ export const formatError = (error: any): string => {
       : JSON.stringify(error.message);
   }
 };
+// Plus date to that number. Ex: today is 14 april (2025-04-14T03:37:04.911Z) => 17 april (2025-04-17T03:37:04.911Z)
 export function calculateFutureDate(days: number) {
   const currentDate = new Date();
   currentDate.setDate(currentDate.getDate() + days);
   return currentDate;
 }
+
+// Minus date to that number. Ex: today is 14 april (2025-04-14T03:37:04.911Z) => 11 april (2025-04-11T03:37:04.911Z)
+export function calculatePastDate(days: number) {
+  const currentDate = new Date();
+  currentDate.setDate(currentDate.getDate() - days);
+  return currentDate;
+}
+
+// Ex: getMonthName("2025-04-14T03:37:04.911Z") => April (ongoing), getMonthName("2025-07-14T03:37:04.911Z") => July
 export function getMonthName(yearAndMonth: string) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [year, monthNumber] = yearAndMonth.split("-");
@@ -78,11 +96,8 @@ export function getMonthName(yearAndMonth: string) {
     ? `${date.toLocaleString("default", { month: "long" })} (ongoing)`
     : date.toLocaleString("default", { month: "long" });
 }
-export function calculatePastDate(days: number) {
-  const currentDate = new Date();
-  currentDate.setDate(currentDate.getDate() - days);
-  return currentDate;
-}
+
+// Ex: at 11:12 AM => { hours: 12, minutes: 48 }
 export function timeUntilMidnight(): { hours: number; minutes: number } {
   const now = new Date();
   const midnight = new Date();
@@ -95,6 +110,7 @@ export function timeUntilMidnight(): { hours: number; minutes: number } {
   return { hours, minutes };
 }
 
+// Format date to be readable from Date object by using dateTime, dateOnly, timeOnly variable that provided here.
 export const formatDateTime = (dateString: Date) => {
   const dateTimeOptions: Intl.DateTimeFormatOptions = {
     month: "short", // abbreviated month name (e.g., 'Oct')
@@ -133,10 +149,13 @@ export const formatDateTime = (dateString: Date) => {
     timeOnly: formattedTime,
   };
 };
+
+// Ex: 225425bhasfui223532f43efwdsad2ey6u212r => ..6u212r
 export function formatId(id: string) {
   return `..${id.substring(id.length - 6)}`;
 }
 
+// Modifying url in a clean way for pagination.
 export function formUrlQuery({
   params,
   key,
@@ -159,6 +178,7 @@ export function formUrlQuery({
   );
 }
 
+// Return url in a clean way, using with href.
 export const getFilterUrl = ({
   params,
   category,

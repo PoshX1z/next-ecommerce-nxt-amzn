@@ -17,6 +17,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
 
+// Cart page.
 export default function CartPage() {
   const {
     cart: { items, itemsPrice },
@@ -25,7 +26,9 @@ export default function CartPage() {
   } = useCartStore();
   const router = useRouter();
   return (
+    /* On left side. */
     <div>
+      {/* Display "Your Shopping Cart is empty" if no item in cart, show item in cart if available.  */}
       <div className="grid grid-cols-1 md:grid-cols-4  md:gap-4">
         {items.length === 0 ? (
           <Card className="col-span-4 rounded-none">
@@ -44,11 +47,13 @@ export default function CartPage() {
                 <CardContent className="p-4">
                   <div className="flex justify-end border-b mb-4">Price</div>
 
+                  {/* List of items in cart display here. */}
                   {items.map((item) => (
                     <div
                       key={item.clientId}
                       className="flex flex-col md:flex-row justify-between py-4 border-b gap-4"
                     >
+                      {/* Picture of product with href. */}
                       <Link href={`/product/${item.slug}`}>
                         <div className="relative w-40 h-40">
                           <Image
@@ -63,6 +68,7 @@ export default function CartPage() {
                         </div>
                       </Link>
 
+                      {/* Name of product with href, color and size. */}
                       <div className="flex-1 space-y-4">
                         <Link
                           href={`/product/${item.slug}`}
@@ -80,6 +86,8 @@ export default function CartPage() {
                             {item.size}
                           </p>
                         </div>
+
+                        {/* Quantity selector and delete button. */}
                         <div className="flex gap-2 items-center">
                           <Select
                             value={item.quantity.toString()}
@@ -110,6 +118,8 @@ export default function CartPage() {
                           </Button>
                         </div>
                       </div>
+
+                      {/* Price of product. */}
                       <div>
                         <p className="text-right">
                           {item.quantity > 1 && (
@@ -131,6 +141,7 @@ export default function CartPage() {
                     </div>
                   ))}
 
+                  {/* Subtotal price of product. */}
                   <div className="flex justify-end text-lg my-2">
                     Subtotal (
                     {items.reduce((acc, item) => acc + item.quantity, 0)}{" "}
@@ -142,6 +153,8 @@ export default function CartPage() {
                 </CardContent>
               </Card>
             </div>
+
+            {/* On right side. */}
             <div>
               <Card className="rounded-none">
                 <CardContent className="py-4 space-y-4">

@@ -6,6 +6,7 @@ import useIsMounted from "@/hooks/useIsMounted";
 import { cn } from "@/lib/utils";
 import useCartStore from "@/hooks/useCartStore";
 
+// Cart button component for the header. It shows the number of items in the cart and a link to the cart page.
 const CartButton = () => {
   const isMounted = useIsMounted();
   const {

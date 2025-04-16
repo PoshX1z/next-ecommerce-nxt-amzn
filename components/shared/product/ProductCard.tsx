@@ -14,6 +14,7 @@ import { formatNumber, generateId, round2 } from "@/lib/utils";
 import Image from "next/image";
 import AddToCart from "./AddToCart";
 
+// Product card component to display product image, details and add to cart button.
 const ProductCard = ({
   product,
   hideBorder = false,

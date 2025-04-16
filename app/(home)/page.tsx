@@ -11,6 +11,7 @@ import {
 import data from "@/lib/data";
 import { toSlug } from "@/lib/utils";
 
+// Home page
 export default async function Page() {
   const categories = (await getAllCategories()).slice(0, 4);
   const newArrivals = await getProductsForCard({

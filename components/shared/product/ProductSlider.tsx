@@ -9,6 +9,7 @@ import React from "react";
 import ProductCard from "./ProductCard";
 import { IProduct } from "@/lib/db/models/product.model";
 
+// Product slider component to display a slider of products (<- , ->).
 const ProductSlider = ({
   title,
   products,

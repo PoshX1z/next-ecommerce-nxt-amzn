@@ -12,6 +12,7 @@ import {
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
+// Home carousal component that show main page product.
 const HomeCarousal = ({
   items,
 }: {

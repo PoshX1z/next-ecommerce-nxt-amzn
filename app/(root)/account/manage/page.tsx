@@ -12,6 +12,8 @@ const PAGE_TITLE = "Login & Security";
 export const metadata: Metadata = {
   title: PAGE_TITLE,
 };
+
+// Login & Security page.
 export default async function ProfilePage() {
   const session = await auth();
   return (

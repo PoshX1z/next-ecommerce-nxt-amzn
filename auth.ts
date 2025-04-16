@@ -1,3 +1,5 @@
+/* auth.ts is for handling authentication system */
+
 import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import bcrypt from "bcryptjs";
 import CredentialsProvider from "next-auth/providers/credentials";
@@ -8,6 +10,7 @@ import Google from "next-auth/providers/google";
 import NextAuth, { type DefaultSession } from "next-auth";
 import authConfig from "./auth.config";
 
+// Modifying the existing module by extending the default "Session" to include the role property of user.
 declare module "next-auth" {
   interface Session {
     user: {
@@ -16,6 +19,7 @@ declare module "next-auth" {
   }
 }
 
+// Main function for authentication system
 export const { handlers, auth, signIn, signOut } = NextAuth({
   ...authConfig,
   pages: {
@@ -25,13 +29,15 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   },
   session: {
     strategy: "jwt",
-    maxAge: 30 * 24 * 60 * 60,
+    maxAge: 30 * 24 * 60 * 60, // Maximum age of the session cookie (30 days).
   },
-  adapter: MongoDBAdapter(client),
+  adapter: MongoDBAdapter(client), // Connect to mongodb adapter (acting as a bridge between next-auth and mongodb).
   providers: [
     Google({
       allowDangerousEmailAccountLinking: true,
     }),
+
+    // Allows users to sign in using credentials (email and password) and store in database.
     CredentialsProvider({
       credentials: {
         email: {
@@ -39,6 +45,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         },
         password: { type: "password" },
       },
+
+      // Handles the authorization process for credentials provider (when user sign in with email and password).
       async authorize(credentials) {
         await connectToDatabase();
         if (credentials == null) return null;
@@ -63,7 +71,9 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       },
     }),
   ],
+  // Main function that are called at different stages of the authentication process.
   callbacks: {
+    // Called When jwt is created (sign-in) or updated (sign-out).
     jwt: async ({ token, user, trigger, session }) => {
       if (user) {
         if (!user.name) {
@@ -82,6 +92,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       }
       return token;
     },
+    // Called When session is created or updated on the client side.
     session: async ({ session, user, trigger, token }) => {
       session.user.id = token.sub as string;
       session.user.role = token.role as string;

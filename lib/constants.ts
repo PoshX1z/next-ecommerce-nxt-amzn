@@ -1,3 +1,4 @@
+/* Constants file containing fixed variable that use across the project. */
 export const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME || "NxtAmzn";
 export const APP_SLOGAN =
   process.env.NEXT_PUBLIC_APP_SLOGAN || "Spend less, enjoy more";

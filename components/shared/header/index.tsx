@@ -8,6 +8,7 @@ import data from "@/lib/data";
 import Sidebar from "./Sidebar";
 import { getAllCategories } from "@/lib/actions/product.actions";
 
+// Header of page (import all of components in header folder and export it as one).
 const Header = async () => {
   const categories = await getAllCategories();
   return (

@@ -79,6 +79,7 @@ export async function generateMetadata(props: {
   }
 }
 
+// Search page.
 export default async function SearchPage(props: {
   searchParams: Promise<{
     q: string;

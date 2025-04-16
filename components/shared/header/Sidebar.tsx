@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/drawer";
 import { auth } from "@/auth";
 
+// Side bar setting page.
 export default async function Sidebar({
   categories,
 }: {
@@ -62,7 +63,7 @@ export default async function Sidebar({
             </DrawerClose>
           </div>
 
-          {/* Shop By Category */}
+          {/* Shop By Category. */}
           <div className="flex-1 overflow-y-auto">
             <div className="p-4 border-b">
               <h2 className="text-lg font-semibold">Shop By Department</h2>
@@ -82,7 +83,7 @@ export default async function Sidebar({
             </nav>
           </div>
 
-          {/* Setting and Help */}
+          {/* Setting and Help. */}
           <div className="border-t flex flex-col ">
             <div className="p-4">
               <h2 className="text-lg font-semibold">Help & Settings</h2>

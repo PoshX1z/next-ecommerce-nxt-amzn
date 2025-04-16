@@ -1,8 +1,8 @@
+/* Zod schema is used for checking type of data for storing in database.  */
 import { z } from "zod";
 import { formatNumberWithDecimal } from "./utils";
 
-/* Zod schema is used for checking type of data that whether it stores in correct format or not before actual usage.  */
-
+// MongoDB object id. Ex: "507f1f77bcf86cd799439011"
 const MongoId = z
   .string()
   .regex(/^[0-9a-fA-F]{24}$/, { message: "Invalid MongoDB ID" });
@@ -16,8 +16,7 @@ const Price = (field: string) =>
       `${field} must have exactly two decimal places (e.g., 49.99)`
     );
 
-// Product
-
+// Review
 export const ReviewInputSchema = z.object({
   product: MongoId,
   user: MongoId,
@@ -31,9 +30,10 @@ export const ReviewInputSchema = z.object({
     .max(5, "Rating must be at most 5"),
 });
 
-//Checking type of product details.
+// Product
+
 export const ProductInputSchema = z.object({
-  name: z.string().min(3, "Name must be at least 3 characters"), //Ex. this is "name" variable that must be "string" type, has min of 3 characters, if not throw error "Name must be at least 3 characters".
+  name: z.string().min(3, "Name must be at least 3 characters"), // This is "name" variable that must be "string" type, has min of 3 characters, if not throw error "Name must be at least 3 characters".
   slug: z.string().min(3, "Slug must be at least 3 characters"),
   category: z.string().min(1, "Category is required"),
   images: z.array(z.string()).min(1, "Product must have at least one image"),
@@ -87,7 +87,8 @@ export const OrderItemSchema = z.object({
   size: z.string().optional(),
   color: z.string().optional(),
 });
-// Cart
+
+// Shipping Address
 export const ShippingAddressSchema = z.object({
   fullName: z.string().min(1, "Full name is required"),
   street: z.string().min(1, "Address is required"),
@@ -136,6 +137,7 @@ export const OrderInputSchema = z.object({
   paidAt: z.date().optional(),
 });
 
+// Cart
 export const CartSchema = z.object({
   items: z
     .array(OrderItemSchema)
@@ -150,7 +152,7 @@ export const CartSchema = z.object({
   expectedDeliveryDate: z.optional(z.date()),
 });
 
-// USER
+// User
 const UserName = z
   .string()
   .min(2, { message: "Username must be at least 2 characters" })

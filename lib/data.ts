@@ -1,6 +1,9 @@
 import { Data, IProductInput, IUserInput } from "@/types";
 import { toSlug } from "./utils";
 import bcrypt from "bcryptjs";
+
+/* All datas used across the project is here */
+
 const reviews = [
   {
     rating: 1,

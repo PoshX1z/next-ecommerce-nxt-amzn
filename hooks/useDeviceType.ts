@@ -1,3 +1,4 @@
+/* A hook that will hold the current device type (either "mobile" or "desktop"). */
 import { useState, useEffect } from "react";
 
 function useDeviceType() {

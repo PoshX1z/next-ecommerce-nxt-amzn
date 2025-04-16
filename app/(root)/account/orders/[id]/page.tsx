@@ -1,3 +1,4 @@
+/* Dynamic route for order id (Ex: account/orders/4235, account/orders/9243). */
 import { notFound } from "next/navigation";
 import React from "react";
 
@@ -17,6 +18,7 @@ export async function generateMetadata(props: {
   };
 }
 
+// Order details page.
 export default async function OrderDetailsPage(props: {
   params: Promise<{
     id: string;
@@ -33,6 +35,7 @@ export default async function OrderDetailsPage(props: {
 
   return (
     <>
+      {/* Navigation tabs at top (Your account > Your Orders > Order ...abcd23g ) */}
       <div className="flex gap-2">
         <Link href="/account">Your Account</Link>
         <span>›</span>
@@ -40,6 +43,7 @@ export default async function OrderDetailsPage(props: {
         <span>›</span>
         <span>Order {formatId(order._id)}</span>
       </div>
+
       <h1 className="h1-bold py-4">Order {formatId(order._id)}</h1>
       <OrderDetailsForm
         order={order}

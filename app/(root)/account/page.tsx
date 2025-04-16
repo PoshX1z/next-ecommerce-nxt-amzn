@@ -9,6 +9,8 @@ const PAGE_TITLE = "Your Account";
 export const metadata: Metadata = {
   title: PAGE_TITLE,
 };
+
+// Account page.
 export default function AccountPage() {
   return (
     <div>

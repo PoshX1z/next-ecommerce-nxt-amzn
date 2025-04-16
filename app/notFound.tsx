@@ -1,3 +1,4 @@
+/* Not found page. */
 "use client";
 import React from "react";
 

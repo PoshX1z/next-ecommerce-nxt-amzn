@@ -10,7 +10,7 @@ import { sendPurchaseReceipt } from "@/emails";
 import { revalidatePath } from "next/cache";
 import { paypal } from "../paypal";
 
-// CREATE
+//Create order from cart that user chooses.
 export const createOrder = async (clientSideCart: Cart) => {
   try {
     await connectToDatabase();
@@ -30,6 +30,7 @@ export const createOrder = async (clientSideCart: Cart) => {
     return { success: false, message: formatError(error) };
   }
 };
+//Sub function
 export const createOrderFromCart = async (
   clientSideCart: Cart,
   userId: string
@@ -57,6 +58,7 @@ export const createOrderFromCart = async (
   return await Order.create(order);
 };
 
+// Calculate delivery date and price when order is created.
 export const calcDeliveryDateAndPrice = async ({
   items,
   shippingAddress,
@@ -102,6 +104,7 @@ export const calcDeliveryDateAndPrice = async ({
     totalPrice,
   };
 };
+
 export async function getOrderById(orderId: string): Promise<IOrder> {
   await connectToDatabase();
   const order = await Order.findById(orderId);
@@ -171,7 +174,7 @@ export async function approvePayPalOrder(
   }
 }
 
-// GET
+//Get orders
 export async function getMyOrders({
   limit,
   page,

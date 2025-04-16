@@ -11,6 +11,8 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import ThemeSwitcher from "./ThemeSwitcher";
+
+// Menu section in header component.
 const Menu = ({ forAdmin = false }: { forAdmin?: boolean }) => {
   return (
     <div className="flex justify-end">

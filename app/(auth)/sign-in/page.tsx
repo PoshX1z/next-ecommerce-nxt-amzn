@@ -11,10 +11,11 @@ import { Button } from "@/components/ui/button";
 import { APP_NAME } from "@/lib/constants";
 import { GoogleSignInForm } from "./GoogleSignInForm";
 
+// Defines the metadata for the page.
 export const metadata: Metadata = {
   title: "Sign In",
 };
-
+// Sign in page.
 export default async function SignIn(props: {
   searchParams: Promise<{
     callbackUrl: string;

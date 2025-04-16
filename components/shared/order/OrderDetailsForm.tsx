@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { Badge } from "@/components/ui/badge";
+import { Badge } from "@/components/ui/badge"; // Status indicator ui (Delivered, "Not paid").
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Table,
@@ -18,6 +18,7 @@ import { cn, formatDateTime } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 import ProductPrice from "../product/ProductPrice";
 
+// Order details form
 export default function OrderDetailsForm({
   order,
 }: {

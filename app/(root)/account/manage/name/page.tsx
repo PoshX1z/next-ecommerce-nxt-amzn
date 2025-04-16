@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { SessionProvider } from "next-auth/react";
+import { SessionProvider } from "next-auth/react"; //A component that provides the user's session data to its children so they can access it.
 
 import { auth } from "@/auth";
 
@@ -13,11 +13,13 @@ export const metadata: Metadata = {
   title: PAGE_TITLE,
 };
 
+// Change your name page.
 export default async function ProfilePage() {
   const session = await auth();
   return (
     <div className="mb-24">
       <SessionProvider session={session}>
+        {/* Navigation tabs on top (Your Account > Login & Security). */}
         <div className="flex gap-2 ">
           <Link href="/account">Your Account</Link>
           <span>›</span>
@@ -25,6 +27,7 @@ export default async function ProfilePage() {
           <span>›</span>
           <span>{PAGE_TITLE}</span>
         </div>
+        {/* At change your name page. */}
         <h1 className="h1-bold py-4">{PAGE_TITLE}</h1>
         <Card className="max-w-2xl">
           <CardContent className="p-4 flex justify-between flex-wrap">

@@ -11,6 +11,7 @@ import useCartStore from "@/hooks/useCartStore";
 import { FREE_SHIPPING_MIN_PRICE } from "@/lib/constants";
 import BrowsingHistoryList from "@/components/shared/BrowsingHistoryList";
 
+// Add Item to cart component.
 const CartAddItem = ({ itemId }: { itemId: string }) => {
   const {
     cart: { items, itemsPrice },

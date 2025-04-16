@@ -53,14 +53,15 @@ export async function getProductsByTag({
   return JSON.parse(JSON.stringify(products)) as IProduct[];
 }
 
-// GET ONE PRODUCT BY SLUG
+// Get one product by slug.
 export async function getProductBySlug(slug: string) {
   await connectToDatabase();
   const product = await Product.findOne({ slug, isPublished: true });
   if (!product) throw new Error("Product not found");
   return JSON.parse(JSON.stringify(product)) as IProduct;
 }
-// GET RELATED PRODUCTS: PRODUCTS WITH SAME CATEGORY
+
+// Get related products to put in recommend choice.
 export async function getRelatedProductsByCategory({
   category,
   productId,
@@ -90,7 +91,7 @@ export async function getRelatedProductsByCategory({
   };
 }
 
-// GET ALL PRODUCTS
+// Get all products.
 export async function getAllProducts({
   query,
   limit,
@@ -133,7 +134,6 @@ export async function getAllProducts({
           },
         }
       : {};
-  // 10-50
   const priceFilter =
     price && price !== "all"
       ? {

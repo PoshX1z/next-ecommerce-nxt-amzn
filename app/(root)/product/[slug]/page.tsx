@@ -1,3 +1,5 @@
+/* Dynamic route for product slug (Ex: product/cacio-233, product/seiko-mens). */
+
 import { Card, CardContent } from "@/components/ui/card";
 import {
   getProductBySlug,
@@ -30,6 +32,7 @@ export async function generateMetadata(props: {
   };
 }
 
+// Product details page.
 export default async function ProductDetails(props: {
   params: Promise<{ slug: string }>;
   searchParams: Promise<{ page: string; color: string; size: string }>;

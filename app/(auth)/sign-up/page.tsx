@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   title: "Sign Up",
 };
 
+// Sign up page.
 export default async function SignUpPage(props: {
   searchParams: Promise<{
     callbackUrl: string;

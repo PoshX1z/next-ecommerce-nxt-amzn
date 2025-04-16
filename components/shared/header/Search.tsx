@@ -11,6 +11,8 @@ import {
 import { APP_NAME } from "@/lib/constants";
 import { getAllCategories } from "@/lib/actions/product.actions";
 const categories = await getAllCategories();
+
+// Search bar in header component.
 const Search = async () => {
   return (
     <form action="/search" method="GET" className="flex  items-stretch h-10 ">

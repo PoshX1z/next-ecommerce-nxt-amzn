@@ -66,6 +66,7 @@ const shippingAddressDefaultValues =
         country: "",
       };
 
+// Checkout form.
 const CheckoutForm = () => {
   const router = useRouter();
 

@@ -1,7 +1,7 @@
 import { Document, Model, model, models, Schema } from "mongoose";
 import { IProductInput } from "@/types";
 
-//Iproduct extends of these in order to use in mongodb and have addtional properties like _id, createdAt, updatedAt for mongodb.
+//Iproduct extends of these in order to store in mongodb and have addtional properties like _id, createdAt, updatedAt for mongodb.
 export interface IProduct extends Document, IProductInput {
   _id: string;
   createdAt: Date;
@@ -98,4 +98,4 @@ const Product =
   (models.Product as Model<IProduct>) ||
   model<IProduct>("Product", productSchema);
 
-export default Product;
+export default Product; //Now Product is the final result that we're gonna seed into database.

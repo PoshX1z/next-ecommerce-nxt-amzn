@@ -2,6 +2,7 @@ import { APP_NAME } from "@/lib/constants";
 import Link from "next/link";
 import React from "react";
 
+// Checkout footer.
 export default function CheckoutFooter() {
   return (
     <div className="border-t-2 space-y-2 my-4 py-4">
