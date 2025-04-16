@@ -15,6 +15,7 @@ const Header = async () => {
     <header className="bg-black  text-white">
       <div className="px-2">
         <div className="flex items-center justify-between">
+          {/* Logo and name. */}
           <div className="flex items-center">
             <Link
               href="/"
@@ -38,6 +39,8 @@ const Header = async () => {
           <Search />
         </div>
       </div>
+
+      {/* All, Today's Deal, New Arrivals, Featured Products, Best Sellers, Browsing History ... */}
       <div className="flex items-center px-3 mb-[1px]  bg-gray-800">
         <Sidebar categories={categories} />
         <div className="flex items-center flex-wrap gap-3 overflow-hidden   max-h-[42px]">

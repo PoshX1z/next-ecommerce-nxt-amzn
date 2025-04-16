@@ -38,6 +38,7 @@ const prices = [
   },
 ];
 
+// Generate metadata (for SEO purpose).
 export async function generateMetadata(props: {
   searchParams: Promise<{
     q: string;
